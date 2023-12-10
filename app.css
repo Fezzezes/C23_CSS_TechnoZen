@@ -1,0 +1,393 @@
+/*
+* app.css
+* =======
+* Réalisé par : François Bouchard
+* Version : 1.0
+* Date : 22 novembre 2023
+
+
+    Fonctionnalité ajouté que nous n'avons pas vue en classe: @keyframes ligne 112 et 195
+*/
+
+/*Kanit foot de google font*/
+@import url('https://fonts.googleapis.com/css2?family=Blaka+Ink&family=Calligraffitti&family=Kanit:ital,wght@0,500;1,500&family=Roboto+Mono:wght@100&display=swap');
+
+/*Presse Start 2p de google font*/
+@import url('https://fonts.googleapis.com/css2?family=Blaka+Ink&family=Calligraffitti&family=Kanit:ital,wght@0,500;1,500&family=Press+Start+2P&family=Roboto+Mono:wght@100&display=swap');
+
+
+/*-------------------------------------------------------------           GENERAL           ------------------------------------------------------------------------*/
+
+*{
+    /*Font par default de la page*/
+    font-family: 'Press Start 2P', cursive;
+    font-weight:lighter;
+    text-shadow: 1px 1px black;
+
+    /*Augmente l'espace entre les lignes pour rendre le texte plus lisible avec le glow*/
+    line-height: 2;
+}
+
+#nom{
+    /*Cache Automne 2023 pour le remplacer par Francois*/
+    font-family: 'Kanit', cursive;
+    font-weight:bold;
+    text-shadow: 1px 5px black;
+}
+
+#nom:before{
+    /*Ajoute mon nom avant le automne 2023*/
+    content: 'François Bouchard ';
+}
+
+h1,h2,h3,h4{
+    /*Font par default des titres*/
+    font-family: 'Kanit', cursive;
+    font-weight:bold;
+    font-style: italic;
+
+    text-align: center;
+    text-shadow: 1px 5px black;
+   
+    color:rgb(226, 230, 221);
+}
+
+h1{
+    font-size:200%;
+    margin: 0;
+}
+
+h2{
+    font-size:170%;
+    margin: 0;
+}
+
+h3{
+    font-size: 150%;
+    /*Les h3 auront une texture en background*/
+    /*Source: https://www.toptal.com/designers/subtlepatterns/micro-carbon/*/
+    background-image: url(./Images/micro_carbon.png);
+    /*Arroundit les 2 coins supérieurs de 30px et ceux inférieurs de 5px*/
+    border-radius: 30px 30px 5px 5px;
+    /*Fait un effet de lumière verte sous l'image*/
+    box-shadow: 0px 25px 20px rgba(53, 248, 4, 0.329);
+    
+    /*Le background du h3 fera la largeur de sa boite*/
+    width: 100%;
+    /*Aucune marge inférieur pour colle le background des 'p' enfants au background des h3*/
+    margin-bottom:  0; 
+}
+
+a{
+    /*Couleur choisi pour highlight les liens*/
+    color: #71e4849f;
+}
+
+a:hover{
+    /*crée un effet de lumière qui clignote quand la souris est au-dessus d'un lien*/
+    animation: glowFlickerGreen 0.5s alternate infinite;
+}
+
+h2 abbr{
+    /*Donne la même police à l'abbriviation dans le h2 pour éviter un font mismatch*/
+    font-weight:bold;
+    font-family: 'Kanit', cursive;
+    text-shadow: 1px 5px black;
+}
+
+abbr{
+    /*Couleur choisi pour highlight les abbréviations, retire le soulignement*/
+    color: rgba(90, 243, 248, 0.637);
+    text-decoration: none;
+}
+
+abbr:hover{
+    /*crée un effet de lumière qui clignote quand la souris est au-dessus d'un abbr*/
+    animation: glowFlickerBlue 0.5s alternate infinite;
+}
+
+/*Fonctionnalité que nous n'avons pas vue en classe*/
+/*3 Animations de lumière qui clignote avec une couleur différente, à 50% de l'animation donne un drop-shadow sur l'élément*/
+/*Source aide: https://codepen.io/BeckyPollard/pen/JjYgKxP*/
+@keyframes glowFlickerGreen {
+    50% { filter: drop-shadow(0px 0px 20px #00f428); }
+}
+
+@keyframes glowFlickerBlue {
+    50% { filter: drop-shadow(0px 0px 20px rgb(107, 250, 255)); }
+}
+
+@keyframes glowFlickerRed {
+    50% { filter: drop-shadow(0px 0px 20px rgb(206, 30, 30)); }
+}
+
+.page-wrapper{
+    /*les 2 sections principales et le aside, seront disposé en row, avec un wrap*/
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;  
+}
+
+body{
+    /*Image background, des étoiles en repeat*/
+    /*Source: https://www.toptal.com/designers/subtlepatterns/ep-natural-black/*/
+    background-image: url(./Images/ep_naturalblack.png);
+    background-repeat:repeat;
+    /*le background ne bouge pas avec le scroll*/
+    background-attachment: fixed;
+    /*page margin*/
+    margin: 20px;
+}
+
+section{
+    /*padding et margin par défaut d'une section*/
+    padding: 50px;
+    margin: 25px;
+    /*background vert degradé transparent*/
+    background-image: linear-gradient(to bottom right,rgba(142, 236, 205, 0.342) , rgba(8, 245, 166, 0.11)); 
+    /*bordure grise à gauche et en haut du background*/
+    border-left: 4px  gray solid;
+    border-top: 4px  gray solid;
+    /*coins arrondies*/
+    border-radius: 25px;
+
+}
+
+p,ul{
+    /*Chaque 'p' et liste ul auront un background similaire aux sections mais plus foncé*/
+    background-color:rgba(39, 36, 36, 0.61);
+    /*aligné au centre, avec un plus petit width que leur h3*/
+    align-self:center;
+    width: 92%;
+    /*aucune marge au-dessus et en-dessous pour permettre aux backgrounds de se coller*/
+    margin-top: 0;
+    margin-bottom: 0;
+
+    padding: 10px;
+    text-align: left;
+
+    /*Textes blanc avec un shadow vert pour donné un effet lumineux vert*/
+    text-shadow: 1px 1px 10px rgb(80, 165, 108);
+    color: rgb(196, 194, 194);
+    /*Un plus petit font était plus lisible*/
+    font-size: 85%;
+}
+
+div p:first-of-type{
+    /*force un espace de 40px au-dessus du premier paragraphe pour éviter que les premiers mots soient dans le shadow du h3*/
+    padding-top: 40px;    
+}
+
+p:last-child{
+    /*seul le dernier p aura les coins du bas rond*/
+    border-radius: 0px 0px 25px 25px;
+}
+p:last-child:after{
+    /*Ajoute un '|' clignotant pour faire un effet de terminal*/
+    content: '|';
+    animation: inputFlicker   1s step-end infinite;
+}
+
+/*Fonctionnalité que nous n'avons pas vue en classe*/
+/*le clignotant aura une opacité de 0 au midpoint*/
+/*Source aide: https://css-tricks.com/snippets/css/typewriter-effect/*/
+@keyframes inputFlicker {
+    50% {opacity: 0;}
+}
+
+/*-------------------------------------------------------------           SECTION 1           ------------------------------------------------------------------------*/
+.intro{
+
+    /*prend la largeur de main.wrapper*/
+    width: 100%;
+    /*les enfants seront aligné en row en wrap*/
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    /*Maximise l'espace entre les blocs*/
+    justify-content: space-between;
+    gap:  1rem 0.5rem;
+
+    /*rapprochera le h1,h2 du haut de l'écran*/
+    margin-top: 0;
+    padding-top: 0;
+}
+
+
+
+header{
+    /*prend la largeur du blocs*/
+    width: 100%;
+}
+
+.preamble{
+
+    width: 78%;
+    /*les enfants seront disposé en colonne centré avec wrap*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    /*sera 2e dans l'ordre de .intro*/
+    order: 5;
+}
+
+
+.preamble  p{
+    width: 95%;
+}
+
+.summary{
+
+    width: 20%;
+    /*Place les enfants en colonne, le plus bas possible*/
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /*sera 3e dans l'ordre .intro*/
+    order: 10;
+    /*plus petit font*/
+    font-size: smaller;
+}
+
+.summary p:first-child{
+
+    /*comme .summary n'a pas de h3 parent, on va arrondir ses coins supérieurs et donner une bordure grise*/
+    border-radius: 25px 25px 0 0;
+    border: gray solid;
+    /*la border-bottom doit être enlevé pour permettre de fusionné les backgrounds des 'p' suivant*/
+    border-bottom: 0;    
+}
+
+.summary p:last-child{
+    /*ferme la bordure*/
+    /*la border-top doit être enlevé pour permettre de fusionné les backgrounds des 'p' précédent*/
+    border: gray solid; 
+    border-top: 0;
+}
+
+.summary p:last-child::after{
+    /*pas besoin de cligotant de terminal ici*/
+    content: none;
+}
+
+
+/*-------------------------------------------------------------           SECTION 2            ------------------------------------------------------------*/
+
+.supporting{
+
+    width:67%;
+    /*les enfants seront en row, wrap, space-evenly*/
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 0.5rem;    
+}
+
+.supporting > div{
+    /*chaque div du .supporting placera aussi ses enfants en colonne*/
+    display: flex;
+    flex-direction: column;
+}
+
+.explanation{
+    /*DE QUOI S'AGIT-IL?*/
+    width: 48%;
+    /*sera premier dans l'ordre .supporting*/
+    order: -100;
+}
+
+.explanation > p{
+    width: 90%;
+}
+
+.benefits{
+    /*AVANTAGES*/
+    width: 40%;
+    /*sera 2e dans l'ordre .supporting*/
+    order: -50;
+}
+
+.benefits > p{
+    width: 88%;
+}
+
+footer{
+    /*background gris pour le footer*/
+    background-color:rgba(141, 141, 141, 0.356);
+  
+    width: 90%;
+    height: 4rem;
+    margin: 2rem;
+    border-radius: 25px 25px;
+
+    /*place chaque enfant centrer en rangée espace égale entre eux*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+footer a{
+    /*couleur des liens du footer*/
+    color: aqua;
+    
+}
+footer a:hover{
+    /*cligotera rouge when hover    */
+    color: red;
+    animation: glowFlickerRed 0.5s alternate infinite;
+}
+
+/*-------------------------------------------------------------           ASIDE           ------------------------------------------------------------------------*/
+
+.sidebar{
+    width: 12%;
+}
+
+.wrapper{
+    /*chaque enfant sera distrubé en colonne wrap*/
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    text-shadow: 1px 1px 10px rgb(80, 165, 108);
+    color: rgb(196, 194, 194);
+    font-size: smaller;
+    
+}
+
+.wrapper div > h3{
+    /*on retiré les images en background des h3 dans le sidebar et leur shadow vert*/
+    background-image: none;
+    box-shadow: none;
+}
+
+ul{
+    /*bordure arrondie grise */
+    border-radius: 25px;
+    border: gray solid;
+
+    /*pour les points de listes soient à l'intérieur*/ 
+    padding-left: 20px;
+}
+
+ul li{
+    /*padding de 20px entre chaque élement*/
+    padding-bottom: 20px; 
+}
+
+a.design-name{
+    /*Couleur différente et uppercase pour les noms des autres designs*/
+    text-transform: uppercase;
+    color:rgba(172, 255, 47, 0.836)
+}
+
+a.designer-name{
+    /*pas de soulignement pour les noms de designers + italic*/
+    text-decoration: none;
+    font-style: italic;
+}
